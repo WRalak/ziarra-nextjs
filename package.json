@@ -4,5 +4,10 @@
   "scripts": {
     "build": "cd ziarra && npm run build",
     "vercel-build": "cd ziarra && npm run build"
+  },
+  "dependencies": {
+    "next": "^14.2.35",
+    "react": "^18",
+    "react-dom": "^18"
   }
 }
