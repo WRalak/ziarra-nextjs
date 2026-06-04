@@ -1,35 +1,7 @@
 {
   "root": true,
-  "parser": "@typescript-eslint/parser",
-  "parserOptions": {
-    "ecmaVersion": "latest",
-    "sourceType": "module",
-    "ecmaFeatures": {
-      "jsx": true
-    }
-  },
-  "env": {
-    "browser": true,
-    "node": true,
-    "es2022": true
-  },
-  "plugins": ["@typescript-eslint", "react", "react-hooks", "@next/next"],
-  "extends": [
-    "eslint:recommended",
-    "plugin:react/recommended",
-    "plugin:react-hooks/recommended"
-  ],
-  "settings": {
-    "react": {
-      "version": "detect"
-    }
-  },
+  "extends": ["next/core-web-vitals"],
   "rules": {
-    "react/react-in-jsx-scope": "off",
-    "react/prop-types": "off",
-    "react/no-unescaped-entities": "off",
-    "react-hooks/incompatible-library": "off",
-    "no-undef": "off",
-    "no-unused-vars": "off"
+    "react/no-unescaped-entities": "off"
   }
 }
