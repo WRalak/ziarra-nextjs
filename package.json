@@ -1,0 +1,8 @@
+{
+  "name": "ziarra-nextjs-root",
+  "private": true,
+  "scripts": {
+    "build": "cd ziarra && npm run build",
+    "vercel-build": "cd ziarra && npm run build"
+  }
+}

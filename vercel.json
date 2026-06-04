@@ -1,0 +1,6 @@
+{
+  "framework": "nextjs",
+  "installCommand": "npm install --prefix ziarra --legacy-peer-deps",
+  "buildCommand": "npm run vercel-build",
+  "outputDirectory": "ziarra/.next"
+}
