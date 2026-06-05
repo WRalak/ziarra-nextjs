@@ -73,9 +73,6 @@ export default function ApplyPage() {
               <Field label="Name or brand/community name">
                 <input placeholder="Mary Campus Travel" />
               </Field>
-              <Field label="ID or passport number">
-                <input placeholder="ID / Passport number" />
-              </Field>
               <Field label="Audience size">
                 <select defaultValue="">
                   <option value="" disabled>Select size</option>

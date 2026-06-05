@@ -4,9 +4,15 @@ import { buildRefUrl, formatKes } from "@/lib/format";
 export const metadata = { title: "Creator Dashboard" };
 
 const packages = [
-  { name: "Diani Weekend Package", slug: "diani-weekend", price: 20000, commission: 5 },
-  { name: "Nairobi National Park Day Trip", slug: "nairobi-park-day-trip", price: 8500, commission: 5 },
-  { name: "Zanzibar Group Trip", slug: "zanzibar-group-trip", price: 58000, commission: 7 },
+  { name: "Diani Weekend Package", slug: "diani-weekend", price: 20000, commission: 5, operator: "Coastline Escapes Ltd" },
+  { name: "Nairobi National Park Day Trip", slug: "nairobi-park-day-trip", price: 8500, commission: 5, operator: "Savannah City Tours" },
+  { name: "Zanzibar Group Trip", slug: "zanzibar-group-trip", price: 58000, commission: 7, operator: "Island Bridge Holidays" },
+];
+
+const creatorSignals = [
+  { label: "Community size", value: "18.4K", detail: "Instagram, TikTok, WhatsApp" },
+  { label: "Engagement", value: "6.2%", detail: "Last 30 days" },
+  { label: "Linked socials", value: "4", detail: "All channels verified" },
 ];
 
 const bookings = [
@@ -53,10 +59,45 @@ export default function CreatorDashboardPage() {
           </div>
         </section>
 
+        <section className="grid gap-4 lg:grid-cols-[0.9fr_1.1fr]">
+          <div className="rounded-2xl border border-gray-200 bg-white p-4">
+            <div className="flex items-start justify-between gap-3">
+              <div>
+                <h2 className="text-sm font-medium text-gray-900">Creator interface</h2>
+                <p className="mt-1 text-xs text-gray-500">Real-time audience signals linked to approved promotion channels.</p>
+              </div>
+              <span className="badge badge-active">Live</span>
+            </div>
+            <div className="mt-4 grid gap-3 sm:grid-cols-3">
+              {creatorSignals.map((signal) => (
+                <div key={signal.label} className="rounded-xl border border-gray-200 bg-gray-50 p-3">
+                  <p className="text-xs text-gray-500">{signal.label}</p>
+                  <p className="mt-1 text-lg font-medium text-gray-900">{signal.value}</p>
+                  <p className="mt-1 text-[11px] text-gray-500">{signal.detail}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="rounded-2xl border border-ziarra-400/50 bg-white p-4">
+            <h2 className="text-sm font-medium text-gray-900">Inventory guardrail</h2>
+            <p className="mt-2 text-sm leading-6 text-gray-500">
+              Creators cannot build arbitrary itineraries. This marketplace only exposes inventory from 30+ signed operators with active licenses, formal compliance checks, and Ziarra service level agreements.
+            </p>
+            <div className="mt-4 grid gap-2 sm:grid-cols-3">
+              {["30+ signed operators", "Active licenses uploaded", "SLA-backed fulfillment"].map((item) => (
+                <div key={item} className="rounded-xl border border-gray-200 bg-gray-50 p-3 text-xs font-medium text-gray-900">
+                  {item}
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
         <section className="grid gap-4 lg:grid-cols-[1.2fr_0.8fr]">
           <div className="rounded-2xl border border-gray-200 bg-white p-4">
             <div className="mb-3 flex items-center justify-between">
-              <h2 className="text-sm font-medium text-gray-900">Ziarra packages I can promote</h2>
+              <h2 className="text-sm font-medium text-gray-900">Marketplace packages I can promote</h2>
               <Link href="/creator/packages" className="text-xs text-ziarra-600">View all</Link>
             </div>
             <div className="space-y-3">
@@ -64,6 +105,7 @@ export default function CreatorDashboardPage() {
                 <div key={pkg.slug} className="flex items-center justify-between rounded-xl border border-gray-200 bg-gray-50 p-3">
                   <div>
                     <p className="text-sm font-medium text-gray-900">{pkg.name}</p>
+                    <p className="mt-1 text-[11px] text-gray-500">Fulfilled by verified operator: {pkg.operator}</p>
                     <p className="text-xs text-gray-500">{formatKes(pkg.price)} · {pkg.commission}% commission</p>
                   </div>
                   <Link href={buildRefUrl("demo_creator", pkg.slug)} className="btn btn-primary py-1.5 text-xs">
